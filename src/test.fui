@@ -1,0 +1,33 @@
+Text : Item { system_type = "QTextBox" }
+Window : Item { system_type = "QMainWindow" }
+HLayout : Item { system_type = "QHorizontalLayout" }
+VLayout : Item { system_type = "QVerticalLayout" }
+Button : Item { system_type = "QButton" }
+
+
+	Window {
+		id = "mainWindow"
+
+		HLayout {
+			id= "lay"
+
+			Text { id = "toptext" value = "Hello World"}
+			Text { id = "bottomtext" value = "Hello other World"}
+
+			Button { 
+				value = "Click me" 
+
+				event = Event {
+					toptext.value = "change!"
+					myApp.mainWindow.lay.bottomtext.value = "also changed!"
+					parent.width = parent.width + 10
+					
+					if(event == Event.RightClick)
+					{
+						Text.hight = 30
+					}
+				}
+			}
+		}
+	}
+
